@@ -37,8 +37,8 @@ jobs:
         run: npm ci || npm install
         
       - name: Build project
-        # Using the repository name dynamically for the base path
-        run: npm run build -- --base=/${{ github.event.repository.name }}/
+        # Using the root base path since a custom domain is configured
+        run: npm run build
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
