@@ -1,0 +1,6 @@
+{
+  "name": "Ember QR",
+  "description": "A premium, high-tech QR code generator with extensive customization and glowing aesthetics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

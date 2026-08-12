@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans Pro", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #f59e0b;
+  }
+}
+
+@layer components {
+  .liquid-glass {
+    @apply bg-white/[0.02] backdrop-blur-[40px] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative overflow-hidden;
+  }
+  .liquid-glass::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent pointer-events-none opacity-100 transition-opacity;
+  }
+  .liquid-glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-[40px] border-l border-t border-white/[0.1] border-r border-b border-white/[0.02] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative overflow-hidden;
+  }
+  .liquid-glass-panel::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-white/[0.1] to-transparent pointer-events-none opacity-50 transition-opacity;
+  }
+  .liquid-button {
+    @apply relative px-5 py-2.5 bg-white/[0.08] hover:bg-white/[0.12] backdrop-blur-[60px] border border-white/[0.15] border-t-white/[0.25] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-white transition-all shadow-[0_4px_16px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.2)] active:scale-95 overflow-hidden flex items-center justify-center gap-2;
+  }
+  .liquid-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-white/[0.1] to-transparent pointer-events-none opacity-50 transition-opacity duration-300;
+  }
+  .liquid-button:hover::before {
+    @apply opacity-100;
+  }
+  .liquid-button-active {
+    @apply bg-amber-500/20 hover:bg-amber-500/30 border-amber-500/30 border-t-amber-500/50 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.15)];
+  }
+  .liquid-button-active::before {
+    @apply from-amber-500/[0.2];
+  }
+  .liquid-input {
+    @apply w-full bg-white/[0.03] backdrop-blur-[20px] border border-white/[0.08] border-t-black/20 shadow-inner rounded-xl p-3 text-white focus:outline-none focus:border-white/20 focus:bg-white/[0.05] transition-all relative z-10;
+  }
+}
+
+.qr-container > * {
+  max-width: 100%;
+  height: auto !important;
+}
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+.qr-container canvas,
+.qr-container svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
