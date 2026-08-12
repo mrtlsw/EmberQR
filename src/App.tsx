@@ -238,7 +238,7 @@ export default function App() {
   }, [isLowContrast, dotColor]);
 
   return (
-    <div className="h-screen w-full bg-gradient-to-br from-[#111111] via-[#050505] to-[#000000] text-gray-300 flex flex-col font-sans overflow-hidden relative">
+    <div className="min-h-screen md:h-screen w-full bg-gradient-to-br from-[#111111] via-[#050505] to-[#000000] text-gray-300 flex flex-col font-sans md:overflow-hidden relative">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <WebThreads
@@ -267,14 +267,14 @@ export default function App() {
       </div>
 
       {/* Header */}
-      <header className="flex flex-row items-center justify-between px-3 sm:px-8 h-16 bg-white/[0.02] backdrop-blur-[40px] border-b border-white/[0.1] z-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/[0.08] before:to-transparent before:pointer-events-none">
+      <header className="flex flex-row items-center justify-between px-3 sm:px-8 h-16 bg-white/[0.02] md:backdrop-blur-[40px] border-b border-white/[0.1] z-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/[0.08] before:to-transparent before:pointer-events-none">
         <div></div>
         
-        <div className="flex gap-1.5 sm:gap-3">
+        <div className="flex gap-1.5 sm:gap-3 flex-wrap justify-end">
           <SpecularButton
             onClick={() => handleDownload('png')}
             size="sm"
-            className="!px-3 sm:!px-5"
+            className="!px-2.5 sm:!px-5"
             radius={20}
             tint="rgba(249,115,22,0.15)"
             tintOpacity={1}
@@ -284,15 +284,15 @@ export default function App() {
             intensity={2}
             autoAnimate={true}
           >
-            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold">
-              <Download size={14} />
+            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold">
+              <Download size={14} className="hidden sm:block" />
               <span className="hidden sm:inline">Export PNG</span><span className="sm:hidden">PNG</span>
             </div>
           </SpecularButton>
           <SpecularButton
             onClick={() => handleDownload('svg')}
             size="sm"
-            className="!px-3 sm:!px-5"
+            className="!px-2.5 sm:!px-5"
             radius={20}
             tint="rgba(249,115,22,0.15)"
             tintOpacity={1}
@@ -302,15 +302,15 @@ export default function App() {
             intensity={2}
             autoAnimate={true}
           >
-            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold">
-              <Download size={14} />
+            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold">
+              <Download size={14} className="hidden sm:block" />
               <span className="hidden sm:inline">Export SVG</span><span className="sm:hidden">SVG</span>
             </div>
           </SpecularButton>
           <SpecularButton
             onClick={() => handleDownload('pdf')}
             size="sm"
-            className="!px-3 sm:!px-5"
+            className="!px-2.5 sm:!px-5"
             radius={20}
             tint="rgba(249,115,22,0.15)"
             tintOpacity={1}
@@ -320,8 +320,8 @@ export default function App() {
             intensity={2}
             autoAnimate={true}
           >
-            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold">
-              <Download size={14} />
+            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold">
+              <Download size={14} className="hidden sm:block" />
               <span className="hidden sm:inline">Export PDF</span><span className="sm:hidden">PDF</span>
             </div>
           </SpecularButton>
@@ -329,10 +329,10 @@ export default function App() {
       </header>
 
       {/* Main Layout */}
-      <main className="flex-1 flex flex-col-reverse md:flex-row overflow-hidden relative">
+      <main className="flex-1 flex flex-col md:flex-row md:overflow-hidden relative">
 
         {/* Sidebar Controls */}
-        <aside className="w-full md:w-[400px] flex-1 md:flex-none relative z-10 border-t md:border-t-0 md:border-r border-white/[0.1] bg-white/[0.02] backdrop-blur-[40px] flex flex-col shadow-2xl overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/[0.05] before:to-transparent before:pointer-events-none">
+        <aside className="w-full md:w-[400px] flex-none relative z-10 border-t md:border-t-0 md:border-r border-white/[0.1] bg-white/[0.02] md:backdrop-blur-[40px] flex flex-col shadow-2xl md:overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/[0.05] before:to-transparent before:pointer-events-none order-2 md:order-1">
           <SettingsSidebar 
             options={options} 
             setOptions={setOptions}
@@ -342,7 +342,7 @@ export default function App() {
         </aside>
 
         {/* Preview Area */}
-        <section className="flex-shrink-0 md:flex-1 flex flex-col items-center justify-center py-4 px-2 sm:p-8 relative z-0 h-auto overflow-hidden">
+        <section className="flex-shrink-0 md:flex-1 flex flex-col items-center justify-center py-4 px-2 sm:p-8 relative z-0 h-auto overflow-hidden order-1 md:order-2">
           <div className="max-w-xl w-full flex flex-col items-center space-y-2 md:space-y-8">
             <div className="text-center space-y-0.5 md:space-y-2 relative z-10">
               <h2 className="text-lg md:text-2xl font-light text-white mb-0 md:mb-1">Live Preview</h2>
@@ -370,7 +370,7 @@ export default function App() {
         </section>
       </main>
       
-      <footer className="h-auto min-h-[40px] py-2 sm:py-0 bg-white/[0.02] backdrop-blur-[40px] flex items-center px-4 sm:px-8 border-t border-white/[0.1] justify-center relative z-10 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/[0.05] before:to-transparent before:pointer-events-none gap-2 sm:gap-0">
+      <footer className="h-auto min-h-[40px] py-2 sm:py-0 bg-white/[0.02] md:backdrop-blur-[40px] flex items-center px-4 sm:px-8 border-t border-white/[0.1] justify-center relative z-10 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/[0.05] before:to-transparent before:pointer-events-none gap-2 sm:gap-0">
         <div className="text-[10px] text-white/40 flex items-center gap-1.5 font-medium tracking-wide">
           Made with <Heart size={10} className="text-red-500 fill-red-500" /> by <a href="https://github.com/mrtlsw" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 hover:underline">mrtlsw</a>
         </div>

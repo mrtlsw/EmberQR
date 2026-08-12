@@ -78,7 +78,7 @@ export function SettingsSidebar({ options, setOptions, exportTransparentBg, setE
         <TabButton active={activeTab === 'advanced'} onClick={() => setActiveTab('advanced')} icon={<Sliders size={14} />} label="ADVANCED" />
       </div>
 
-      <div className="p-4 sm:p-6 overflow-y-auto overflow-x-hidden flex-1 custom-scrollbar">
+      <div className="p-4 sm:p-6 overflow-y-visible md:overflow-y-auto overflow-x-hidden flex-1 custom-scrollbar">
         <AnimatePresence mode="wait">
           {activeTab === 'data' && (
             <motion.div
@@ -544,9 +544,9 @@ function TabButton({ active, onClick, icon, label }: { active: boolean; onClick:
       autoAnimate={active}
       followMouse={true}
     >
-      <div className="flex items-center justify-center gap-1 relative z-10 text-[8px] sm:text-[9px] uppercase tracking-wider font-bold whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-1 relative z-10 text-[8px] sm:text-[9px] uppercase tracking-wider font-bold whitespace-nowrap">
         {icon}
-        <span className="hidden sm:inline">{label}</span>
+        <span>{label}</span>
       </div>
     </SpecularButton>
   );
