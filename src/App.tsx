@@ -10,7 +10,7 @@ import { presets } from './presets';
 import { getContrast, getLuminance } from './utils/colors';
 import { roundImageCorners } from './utils/image';
 import { motion } from 'motion/react';
-import WebThreads from './components/WebThreads';
+import MoltenMetal from './components/MoltenMetal';
 import SpecularButton from './components/SpecularButton';
 
 const defaultOptions: Options = {
@@ -238,31 +238,28 @@ export default function App() {
   }, [isLowContrast, dotColor]);
 
   return (
-    <div className="min-h-screen md:h-screen w-full bg-gradient-to-br from-[#111111] via-[#050505] to-[#000000] text-gray-300 flex flex-col font-sans md:overflow-hidden relative">
+    <div className="min-h-screen lg:h-screen w-full bg-gradient-to-br from-[#111111] via-[#050505] to-[#000000] text-gray-300 flex flex-col font-sans lg:overflow-hidden relative">
       {/* Dynamic Background */}
-      <div className="absolute inset-0 z-0">
-        <WebThreads
+      <div className="fixed inset-0 z-0">
+        <MoltenMetal
           color1="#F97316"
-          color2="#f7f7f7"
+          color2="#ffb170"
           color3="#ffffff"
           speed={0.2}
-          threadCount={6}
-          frequency={5.0}
-          spread={0.18}
-          taper={1.0}
-          position={0.5}
-          fanMode="center"
-          glow={0.01}
-          falloff={0.8}
-          thickness={1.1}
-          brightness={0.4}
-          opacity={0.6}
-          mirror={true}
-          shimmer={true}
+          scale={2.7}
+          detail={3}
+          glow={1.2}
+          coreSize={0.1}
+          swirl={0.8}
+          fold={-0.2}
+          blackPoint={0.08}
+          brightness={0.85}
+          colorMode="ember"
           grain={true}
-          grainIntensity={0.05}
+          grainIntensity={0.08}
           mouseInteraction={true}
-          mouseStrength={0.15}
+          mouseStrength={0.25}
+          opacity={0.6}
         />
       </div>
 
@@ -274,7 +271,7 @@ export default function App() {
           <SpecularButton
             onClick={() => handleDownload('png')}
             size="sm"
-            className="!px-2.5 sm:!px-5"
+            className="!px-5 sm:!px-6"
             radius={20}
             tint="rgba(249,115,22,0.15)"
             tintOpacity={1}
@@ -292,7 +289,7 @@ export default function App() {
           <SpecularButton
             onClick={() => handleDownload('svg')}
             size="sm"
-            className="!px-2.5 sm:!px-5"
+            className="!px-5 sm:!px-6"
             radius={20}
             tint="rgba(249,115,22,0.15)"
             tintOpacity={1}
@@ -310,7 +307,7 @@ export default function App() {
           <SpecularButton
             onClick={() => handleDownload('pdf')}
             size="sm"
-            className="!px-2.5 sm:!px-5"
+            className="!px-5 sm:!px-6"
             radius={20}
             tint="rgba(249,115,22,0.15)"
             tintOpacity={1}
@@ -329,10 +326,10 @@ export default function App() {
       </header>
 
       {/* Main Layout */}
-      <main className="flex-1 flex flex-col md:flex-row md:overflow-hidden relative">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden relative">
 
         {/* Sidebar Controls */}
-        <aside className="w-full md:w-[400px] flex-none relative z-10 border-t md:border-t-0 md:border-r border-white/[0.1] bg-white/[0.02] md:backdrop-blur-[40px] flex flex-col shadow-2xl md:overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/[0.05] before:to-transparent before:pointer-events-none order-2 md:order-1">
+        <aside className="w-full lg:w-[400px] flex-none relative z-10 border-t-0 lg:border-r border-white/[0.1] bg-white/[0.02] md:backdrop-blur-[40px] flex flex-col shadow-2xl lg:overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/[0.05] before:to-transparent before:pointer-events-none order-2 lg:order-1">
           <SettingsSidebar 
             options={options} 
             setOptions={setOptions}
@@ -342,21 +339,21 @@ export default function App() {
         </aside>
 
         {/* Preview Area */}
-        <section className="flex-shrink-0 md:flex-1 flex flex-col items-center justify-center py-4 px-2 sm:p-8 relative z-0 h-auto overflow-hidden order-1 md:order-2">
-          <div className="max-w-xl w-full flex flex-col items-center space-y-2 md:space-y-8">
-            <div className="text-center space-y-0.5 md:space-y-2 relative z-10">
-              <h2 className="text-lg md:text-2xl font-light text-white mb-0 md:mb-1">Live Preview</h2>
+        <section className="flex-shrink-0 lg:flex-1 flex flex-col items-center justify-center py-2 lg:py-4 px-2 sm:px-8 sticky top-0 z-40 lg:z-0 lg:relative h-auto overflow-hidden order-1 lg:order-2 bg-black/60 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none border-b border-white/10 lg:border-none shadow-2xl lg:shadow-none">
+          <div className="max-w-xl w-full flex flex-col items-center space-y-1 lg:space-y-8">
+            <div className="text-center space-y-0.5 lg:space-y-2 relative z-10 hidden lg:block">
+              <h2 className="text-lg lg:text-2xl font-light text-white mb-0 lg:mb-1">Live Preview</h2>
             </div>
             
             {isLowContrast && (
               <motion.div 
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-3 rounded-xl flex items-start gap-3 max-w-sm text-xs font-medium shadow-[0_0_15px_rgba(245,158,11,0.1)] relative z-10"
+                className="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-3 py-2 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl flex items-start gap-2 lg:gap-3 max-w-sm text-[10px] lg:text-xs font-medium shadow-[0_0_15px_rgba(245,158,11,0.1)] relative z-10"
               >
-                <AlertTriangle size={16} className="shrink-0 mt-0.5" />
+                <AlertTriangle size={14} className="shrink-0 mt-0.5" />
                 <p>
-                  <strong>Low Contrast Detected!</strong> The selected colors may render the QR code invisible or hard to scan, especially if placed on a similar colored background or printed.
+                  <strong>Low Contrast!</strong> Colors may render the QR code hard to scan.
                 </p>
               </motion.div>
             )}

@@ -111,8 +111,8 @@ export function QRCodePreview({ options, onDownload, setQrCodeInstance }: QRCode
       {/* Glow Effect behind the glass */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-amber-500/20 blur-[80px] rounded-full opacity-40 group-hover:opacity-70 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
       
-      <div className="relative p-4 md:p-12 liquid-glass-panel rounded-2xl md:rounded-[2.5rem] flex items-center justify-center w-full max-w-[280px] md:max-w-none aspect-square md:aspect-auto mx-auto">
-        <div ref={ref} className="qr-container overflow-hidden rounded-xl shadow-inner relative z-10" />
+      <div className="relative p-3 md:p-6 lg:p-12 liquid-glass-panel rounded-2xl md:rounded-[2.5rem] flex items-center justify-center w-full max-w-[200px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-none aspect-square lg:aspect-auto mx-auto">
+        <div ref={ref} className="qr-container w-full h-full flex items-center justify-center overflow-hidden rounded-xl shadow-inner relative z-10" />
       </div>
     </div>
   );

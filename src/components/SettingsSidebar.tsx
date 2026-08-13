@@ -78,7 +78,7 @@ export function SettingsSidebar({ options, setOptions, exportTransparentBg, setE
         <TabButton active={activeTab === 'advanced'} onClick={() => setActiveTab('advanced')} icon={<Sliders size={14} />} label="ADVANCED" />
       </div>
 
-      <div className="p-4 sm:p-6 overflow-y-visible md:overflow-y-auto overflow-x-hidden flex-1 custom-scrollbar">
+      <div className="p-4 sm:p-6 overflow-y-visible lg:overflow-y-auto overflow-x-hidden flex-1 custom-scrollbar">
         <AnimatePresence mode="wait">
           {activeTab === 'data' && (
             <motion.div
